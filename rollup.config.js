@@ -2,6 +2,7 @@ import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
+import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess, { postcss } from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
@@ -42,9 +43,8 @@ export default {
 		svelte({
 			preprocess: sveltePreprocess({
 				scss: {
-					includePaths: ['theme'],
+					includePaths: ['src/theme'],
 				},
-				sourceMap: !production 
 			}),
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -64,6 +64,9 @@ export default {
 			browser: true,
 			dedupe: ['svelte']
 		}),
+		json({
+			compact: true
+		  }),		
 		commonjs(),
 		typescript({
 			sourceMap: !production,

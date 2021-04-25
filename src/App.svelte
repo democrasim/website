@@ -1,4 +1,5 @@
-<script lang="ts">
+<script lang="typescript">
+	
 	import {
 		Card,
 		CardTitle,
@@ -7,13 +8,26 @@
 		Button,
     	Icon,
 		MaterialApp,
-ListItem
+		ListItem
 	} from 'svelte-materialify';
 import Law from './Law.svelte';
 
+let laws;
+
+import lawsData from './data/laws.json'; 
+
+console.log(lawsData);
+
+laws = lawsData;
+
 </script>
 
+<style>
+
+</style>
+
 <MaterialApp>
-	<Law id={4} content="תוכן חוק" />
-	<Law id={5} content="בזיון" />
+	{#each laws as law}
+	<Law law={law} />
+	{/each}
 </MaterialApp>

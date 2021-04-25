@@ -1,0 +1,128 @@
+[
+    {
+        "id": 1,
+        "legislator": {
+          "id": 2,
+          "name": "Amit Nave",
+          "phone": "972544805278",
+          "president": false,
+          "registered": true,
+          "joined": "2021-04-22T19:52:23.019+00:00"
+        },
+        "content": {
+          "id": 3,
+          "type": "FACT",
+          "description": "שרבי השמין"
+        },
+        "votes": [
+          {
+            "id": 1,
+            "voter": {
+              "id": 2,
+              "name": "Amit Nave",
+              "phone": "972544805278",
+              "president": false,
+              "registered": true,
+              "joined": "2021-04-22T19:52:23.019+00:00"
+            },
+            "vote": "FOR",
+            "reason": "אחלה חוק ראשון"
+          },
+          {
+              "id": 1,
+              "voter": {
+                "id": 2,
+                "name": "Dan binnun",
+                "phone": "972544805278",
+                "president": false,
+                "registered": true,
+                "joined": "2021-04-22T19:52:23.019+00:00"
+              },
+              "vote": "FOR",
+              "reason": "תרבותי"
+            },
+            {
+                "id": 1,
+                "voter": {
+                  "id": 2,
+                  "name": "Sharabi",
+                  "phone": "972544805278",
+                  "president": false,
+                  "registered": true,
+                  "joined": "2021-04-22T19:52:23.019+00:00"
+                },
+                "vote": "ABSTAIN",
+                "reason": "ביקורת בונה"
+              }
+        ],
+        "status": "UNDER_VOTE",
+        "timestamp": "2021-04-22T21:57:34.055+00:00",
+        "constitutional": true,
+        "anonymousLegislator": false,
+        "fakeName": "",
+        "contentString": "שרבי השמין"
+      },
+    {
+      "id": 2,
+      "legislator": {
+        "id": 2,
+        "name": "Amit Nave",
+        "phone": "972544805278",
+        "president": false,
+        "registered": true,
+        "joined": "2021-04-22T19:52:23.019+00:00"
+      },
+      "content": {
+        "id": 3,
+        "type": "FACT",
+        "description": "זה לא קול להשמין"
+      },
+      "votes": [
+        {
+          "id": 1,
+          "voter": {
+            "id": 2,
+            "name": "Amit Nave",
+            "phone": "972544805278",
+            "president": false,
+            "registered": true,
+            "joined": "2021-04-22T19:52:23.019+00:00"
+          },
+          "vote": "FOR",
+          "reason": "אחלה חוק ראשון"
+        },
+        {
+            "id": 1,
+            "voter": {
+              "id": 2,
+              "name": "Dan binnun",
+              "phone": "972544805278",
+              "president": false,
+              "registered": true,
+              "joined": "2021-04-22T19:52:23.019+00:00"
+            },
+            "vote": "FOR",
+            "reason": "תרבותי"
+          },
+          {
+              "id": 1,
+              "voter": {
+                "id": 2,
+                "name": "Sharabi",
+                "phone": "972544805278",
+                "president": false,
+                "registered": true,
+                "joined": "2021-04-22T19:52:23.019+00:00"
+              },
+              "vote": "ABSTAIN",
+              "reason": "ביקורת בונה"
+            }
+      ],
+      "status": "UNDER_VOTE",
+      "timestamp": "2021-04-22T21:57:34.055+00:00",
+      "constitutional": true,
+      "anonymousLegislator": false,
+      "fakeName": "",
+      "contentString": "זה לא קול להשמין"
+    }
+  ]
