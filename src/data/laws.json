@@ -55,7 +55,7 @@
                 "reason": "ביקורת בונה"
               }
         ],
-        "status": "UNDER_VOTE",
+        "status": "CANCELED",
         "timestamp": "2021-04-22T21:57:34.055+00:00",
         "constitutional": true,
         "anonymousLegislator": false,
@@ -74,7 +74,7 @@
       },
       "content": {
         "id": 3,
-        "type": "FACT",
+        "type": "REQUIREMENT",
         "description": "זה לא קול להשמין"
       },
       "votes": [
