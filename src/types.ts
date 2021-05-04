@@ -26,10 +26,11 @@
     export interface Vote {
         id: number;
         voter: Voter;
-        vote: string;
+        vote: VoteType  ;
         reason: string;
     }
 
+    export type VoteType = "FOR" | "AGAINST" | "ABSTAIN";
     export type Status = "PASSED" | "UNDER_VOTE" | "FAILED" | "VETOED" | "CANCELED";
 
     export interface Law {
