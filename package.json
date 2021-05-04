@@ -15,6 +15,7 @@
     "@rollup/plugin-typescript": "^8.0.0",
     "@smui/chips": "^4.0.0",
     "@tsconfig/svelte": "^1.0.0",
+    "lerna": "^3.22.1",
     "node-sass": "5.0.0",
     "postcss": "8.2.12",
     "rollup": "^2.3.4",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "@mdi/js": "^5.9.55",
+    "axios": "^0.21.1",
     "sirv-cli": "^1.0.0",
     "svelte-materialify": "0.3.10",
     "svelte-routing": "^1.6.0"

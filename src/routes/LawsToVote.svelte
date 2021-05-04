@@ -2,9 +2,9 @@
 
 <h3>LawsToVote</h3>
 
-{#each laws as law}
+{#each $lawsToVote as law}
 	
-	<LawComponent law={law} />
+	<LawComponent {law} />
 
 {/each}
 
@@ -12,11 +12,11 @@
 <script lang="ts">
     import LawComponent from '../Law.svelte';
     import type { Law } from '../types';
+    import { writable } from 'svelte/store';
 
-    let laws : Law[];
 
     import lawsData from '../data/laws.json';
-    
-    //@ts-ignore
-    laws = lawsData;
+
+    export const lawsToVote : SvelteStore<Law[]> = writable(lawsData);
+
 </script>
