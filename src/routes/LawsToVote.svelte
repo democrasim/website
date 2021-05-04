@@ -10,7 +10,7 @@
 
 
 <script lang="ts">
-    import LawComponent from '../Law.svelte';
+    import LawComponent from '../components/Law.svelte';
     import type { Law } from '../types';
     import { writable } from 'svelte/store';
 
