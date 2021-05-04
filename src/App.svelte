@@ -1,4 +1,6 @@
 <script lang="typescript">
+  import NavBar from './components/NavBar.svelte';
+
 import { mdiHomeCity, mdiAccountGroup, mdiVote  } from '@mdi/js';
 
 	
@@ -18,58 +20,23 @@ ListItem,
 	import Home from './routes/Home.svelte';
 	import LawsToVote from './routes/LawsToVote.svelte';
 	import Login from './routes/Login.svelte';
+import { theme } from './util/stores';
+import Users from './routes/Users.svelte';
 	const links = ['Home', 'Login'];
 
 	export let url = "";
 </script>
 
-<style>
 
-</style>
-
-<MaterialApp>
+<MaterialApp theme={$theme}>
 	<Router url="{url}">
 		<div style="display: flex;">
-		<NavigationDrawer style="height: 100vh">
-			<ListItem>
-				<span slot="prepend" class="ml-n2">
-
-				Mudit Somani
-				</span>
-			  </ListItem>
-			  <Divider />
-
-
-			  <List dense nav>
-				  <Link to="/">
-					<ListItem>
-					<span slot="prepend">
-						<Icon path={mdiHomeCity} />
-					</span>
-					Home
-					</ListItem>
-				</Link>
-				<Link to="/laws_to_vote">
-				<ListItem>
-				  <span slot="prepend">
-					<Icon path={mdiVote } />
-				  </span>
-				  Laws to vote on
-				</ListItem>
-				</Link>
-				<ListItem>
-				  <span slot="prepend">
-					<Icon path={mdiAccountGroup} />
-				  </span>
-				  Users
-				</ListItem>
-			  </List>
-			  
-		</NavigationDrawer>
+		<NavBar></NavBar>
 		<div style="width: 100%; min-height: 100; display: flex; flex-direction: column; justify-content: space-between; ">
 		  <Route path="/" component="{Home}" />
 		  <Route path="/laws_to_vote" component="{LawsToVote}" />
 		  <Route path="/login" component="{Login}" />
+		  <Route path="/users" component="{Users}" />
 		  <Route path="/"><Home /></Route>
 
 		  <Footer style="width: 100%" padless class="indigo theme--dark justify-center flex-column">
