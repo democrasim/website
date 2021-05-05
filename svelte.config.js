@@ -1,5 +1,7 @@
 import preprocess from 'svelte-preprocess';
 import { resolve } from "path";
+import fs from 'fs';
+const pkg = JSON.parse(fs.readFileSync(new URL('package.json', import.meta.url), 'utf8'));
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,8 +12,10 @@ const config = {
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
-		
 		vite: {
+			ssr: {
+				noExternal: Object.keys(pkg.dependencies || {})
+			},
 			resolve: {
 				alias: {
 					"@components": resolve("src/lib/components"),
@@ -25,8 +29,9 @@ const config = {
 					"$lib": resolve("src/lib")
 				}
 			}
-		}
-	}
+		}		
+	},
+	
 };
 
 export default config;

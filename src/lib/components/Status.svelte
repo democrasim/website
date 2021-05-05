@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Icon, ListItem } from "svelte-materialify";
     import { mdiCheckCircle, mdiTimerSand, mdiAlertDecagram, mdiAlert   } from '@mdi/js';
-    import Vote from "@/Vote.svelte";
+    import Vote from "@components/Vote.svelte";
     export let status;
     </script>
     
