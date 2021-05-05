@@ -1,29 +1,20 @@
 <script lang="typescript">
-  import NavBar from './components/NavBar.svelte';
-
-import { mdiHomeCity, mdiAccountGroup, mdiVote  } from '@mdi/js';
+  import NavBar from '@components/NavBar.svelte';
 
 	
 	import {
 Button,
 Divider,
 Footer,
-Icon,
-List,
-ListItem,
-		MaterialApp,
-		NavigationDrawer
+MaterialApp,
 	} from 'svelte-materialify';
 
-	import { Router, Link, Route } from "svelte-routing";
 
-	import Home from './routes/Home.svelte';
-	import LawsToVote from './routes/LawsToVote.svelte';
-	import Login from './routes/Login.svelte';
-import { theme } from './util/stores';
-import Users from './routes/Users.svelte';
+
+	import { theme } from '../lib/util/stores';
+	import Users from './Users.svelte';
 	const links = ['Home', 'Login'];
-
+	import { Router, Link, Route } from 'svelte-routing';
 	export let url = "";
 </script>
 
@@ -33,11 +24,7 @@ import Users from './routes/Users.svelte';
 		<div style="display: flex;">
 		<NavBar></NavBar>
 		<div style="width: 100%; min-height: 100; display: flex; flex-direction: column; justify-content: space-between; ">
-		  <Route path="/" component="{Home}" />
-		  <Route path="/laws_to_vote" component="{LawsToVote}" />
-		  <Route path="/login" component="{Login}" />
-		  <Route path="/users" component="{Users}" />
-		  <Route path="/"><Home /></Route>
+		  <slot />
 
 		  <Footer style="width: 100%" padless class="indigo theme--dark justify-center flex-column">
 			<div class="mt-2 mb-2">

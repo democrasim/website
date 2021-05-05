@@ -1,16 +1,29 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
-  "baseUrl": "src",
+  "baseUrl": ".",
+  "importsNotUsedAsValues": "error",
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+  "allowJs": true,
+  "checkJs": true,
   "paths": {
-    "@components/": ["components/*"],
-    "@services/": ["services/*"],
-    "@routes/": ["routes/*"],
-    "@util/": ["util/*"],
-    "@/": ["/"]
+    "@components/*": ["src/lib/components/*"],
+    "@services/*": ["src/lib/services/*"],
+    "@stores/*": ["src/lib/stores/*"],
+    "@routes/*": ["src/lib/routes/*"],
+    "@util/*": ["src/lib/util/*"],
+    "@type/*": ["src/lib/types/*"],
+    "@/*": ["src/*"],
+    "$lib/*": ["src/lib/*"]
+
   }
 }

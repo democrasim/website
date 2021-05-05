@@ -10,13 +10,10 @@
 
 
 <script lang="ts">
-    import LawComponent from '../components/Law.svelte';
-    import type { Law } from '../types';
+    import LawComponent from '@components/Law.svelte';
     import { writable } from 'svelte/store';
+    import { laws } from '@util/stores'
 
-
-    import lawsData from '../data/laws.json';
-
-    export const lawsToVote : SvelteStore<Law[]> = writable(lawsData);
+    let lawsToVote = $laws;
 
 </script>

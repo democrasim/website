@@ -1,9 +1,9 @@
 <script>
-    import User from '@components/User';
+    import User from '@components/User.svelte';
 
-    import { allMembers } from '@service/userService'
+    import { allMembers } from '@services/userService'
 
-    import members from '@util/stores';
+    import { members } from '@util/stores';
 
     allMembers().then(list => members.set(list)); 
 

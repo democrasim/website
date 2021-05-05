@@ -3,38 +3,37 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear",
-    "validate": "svelte-check"
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "lint": "prettier --check . && eslint --ignore-path .gitignore .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
-    "@smui/chips": "^4.0.0",
-    "@tsconfig/svelte": "^1.0.0",
+    "@sveltejs/kit": "next",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "prettier": "~2.2.1",
+    "prettier-plugin-svelte": "^2.2.0",
     "lerna": "^3.22.1",
     "node-sass": "5.0.0",
-    "postcss": "8.2.12",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
     "sass": "1.32.11",
     "svelte": "^3.0.0",
     "svelte-check": "^1.0.0",
     "svelte-preprocess": "^4.0.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.0.0"
-  },
-  "dependencies": {
+    "typescript": "^4.0.0",
     "@mdi/js": "^5.9.55",
     "axios": "^0.21.1",
+    "vite": "^2.1.0",
+    "svelte-routing": "1.6.0"
+  },
+  "type": "module",
+  "dependencies": {
     "sirv-cli": "^1.0.0",
-    "svelte-materialify": "0.3.10",
-    "svelte-routing": "^1.6.0"
+    "svelte-materialify": "0.3.10"
   }
 }

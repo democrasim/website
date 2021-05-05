@@ -17,7 +17,7 @@
 
   import { mdiBook, mdiCalendarCheck } from '@mdi/js';
 
-  import Vote from "./Vote.svelte";
+  import Vote from "@components/Vote.svelte";
   import type { Law } from "../types";
   import Status from "@components/Status.svelte";
   export let law: Law;

@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store'
-import type { Law, Member } from '../types';
+import type { Law, Member } from '@lib/type';
+
+
 
 const light : 'light'|'dark' = 'light'
 

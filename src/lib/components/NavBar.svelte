@@ -15,12 +15,9 @@ ListItem,
 
 	import { Router, Link, Route } from "svelte-routing";
 
-	import Home from '../routes/Home.svelte';
-	import LawsToVote from '../routes/LawsToVote.svelte';
-	import Login from '../routes/Login.svelte';
 	const links = ['Home', 'Login'];
 
-    import { theme } from '../util/stores';
+    import { theme } from '@util/stores';
 
     function toggle() {
         theme.set($theme === 'light' ? 'dark' : 'light');

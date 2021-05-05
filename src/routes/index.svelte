@@ -7,7 +7,7 @@
     <div class="main__title">
         <div class="main__content">
             <h1 class="main__content--title">Democrasim</h1>
-            <p class="main__content--paragraph">Vote. Propose. Obey.</p>
+            <p class="main__content--paragraph">Vote. Propose. Legislate.</p>
             <Button rounded>Sign Up</Button>
         </div>
         <div class="main__photo">
