@@ -1,5 +1,5 @@
 [{
-    "id": 2,
+    "id": "2",
     "name": "Amit Nave",
     "phone": "972544805278",
     "president": false,
@@ -7,7 +7,7 @@
     "joined": "2021-04-22T19:52:23.019+00:00"
 },
 {
-    "id": 3,
+    "id": "3",
     "name": "Itai Lustig",
     "phone": "972544805278",
     "president": false,
@@ -15,7 +15,7 @@
     "joined": "2021-04-22T19:52:23.019+00:00"
 },
 {
-    "id": 4,
+    "id": "4",
     "name": "Shalev Sharabi",
     "phone": "972544805278",
     "president": false,
@@ -23,7 +23,7 @@
     "joined": "2021-04-22T19:52:23.019+00:00"
 },
 {
-    "id": 5,
+    "id": "5",
     "name": "Metuky Alon",
     "phone": "972544805278",
     "president": true,

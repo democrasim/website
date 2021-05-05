@@ -19,7 +19,7 @@
 
   import Vote from "./Vote.svelte";
   import type { Law } from "../types";
-  import Status from "./Status.svelte";
+  import Status from "@components/Status.svelte";
   export let law: Law;
 </script>
 

@@ -1,8 +1,7 @@
 <script lang="ts">
     import { Icon, ListItem } from "svelte-materialify";
     import { mdiCheckCircle, mdiTimerSand, mdiAlertDecagram, mdiAlert   } from '@mdi/js';
-    import Chip, { Text } from '@smui/chips';
-    import Vote from "./Vote.svelte";
+    import Vote from "@/Vote.svelte";
     export let status;
     </script>
     
@@ -14,7 +13,7 @@
         <span slot="prepend">
             <Icon path={mdiCheckCircle} class="success-text" />    
         </span>
-            <Text>Passed</Text> 
+            Passed
             
     </ListItem>
         {:else if status == "UNDER_VOTE"}
@@ -22,28 +21,28 @@
         <span slot="prepend">
             <Icon path={mdiTimerSand} spin class="primary-text" />    
         </span>
-            <Text>Under Vote</Text> 
+            Under Vote 
     </ListItem>
         {:else if status == "FAILED"}
         <ListItem>
             <span slot="prepend">
                 <Icon path={mdiAlertDecagram} class="error-text" />    
             </span>
-                <Text>Failed</Text> 
+                Failed
         </ListItem>
         {:else if status == "VETOED"}
         <ListItem>
             <span slot="prepend">
                 <Icon path={mdiAlertDecagram} class="error-text" />    
             </span>
-                <Text>Vetoed</Text> 
+                Vetoed 
         </ListItem>
         {:else if status == "CANCELED"}
         <ListItem>
             <span slot="prepend">
                 <Icon path={mdiAlert}  class="warning-text" />    
             </span>
-                <Text>Canceled</Text> 
+                Canceled 
         </ListItem>
         
         {/if}

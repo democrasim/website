@@ -4,5 +4,13 @@
     "resolveJsonModule": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+  "baseUrl": "src",
+  "paths": {
+    "@components/": ["components/*"],
+    "@services/": ["services/*"],
+    "@routes/": ["routes/*"],
+    "@util/": ["util/*"],
+    "@/": ["/"]
+  }
 }
