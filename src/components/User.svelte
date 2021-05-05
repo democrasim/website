@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Button, Card, CardActions, CardSubtitle, CardTitle } from "svelte-materialify";
+import { Link } from "svelte-routing";
 import type { Member } from "../types";
 
 
@@ -15,6 +16,8 @@ import type { Member } from "../types";
     </CardSubtitle>
 
     <CardActions>
+        <Link to="/user/{user.id}">
         <Button rounded outlined>{user.name}'s Page</Button>
+        </Link> 
     </CardActions>
 </Card>

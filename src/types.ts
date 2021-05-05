@@ -1,6 +1,6 @@
 
     export interface Member {
-        id: number;
+        id: string;
         name: string;
         phone: string;
         president: boolean;
@@ -9,24 +9,15 @@
     }
 
     export interface Content {
-        id: number;
+        id: string;
         type: string;
         description: string;
     }
 
-    export interface Voter {
-        id: number;
-        name: string;
-        phone: string;
-        president: boolean;
-        registered: boolean;
-        joined: Date;
-    }
-
     export interface Vote {
-        id: number;
-        voter: Voter;
-        vote: VoteType  ;
+        id: string;
+        voter: Member;
+        vote: VoteType;
         reason: string;
     }
 
@@ -34,7 +25,7 @@
     export type Status = "PASSED" | "UNDER_VOTE" | "FAILED" | "VETOED" | "CANCELED";
 
     export interface Law {
-        id: number;
+        id: string;
         legislator: Member;
         content: Content;
         votes: Vote[];
