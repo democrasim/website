@@ -17,7 +17,9 @@ ListItem,
 
 	const links = ['Home', 'Login'];
 
-    import { theme } from '@util/stores';
+    import { theme as themeStore } from '@util/stores';
+
+	let theme = themeStore;
 
     function toggle() {
         theme.set($theme === 'light' ? 'dark' : 'light');
@@ -37,29 +39,30 @@ ListItem,
 
 
 			  <List dense nav>
-				  <Link to="/">
+				  <a href="/">
 					<ListItem>
 					<span slot="prepend">
 						<Icon path={mdiHomeCity} />
 					</span>
 					Home
 					</ListItem>
-				</Link>
-				<Link to="/laws_to_vote">
+				</a>
+				<a href="/LawsToVote">
 				<ListItem>
 				  <span slot="prepend">
 					<Icon path={mdiVote } />
 				  </span>
 				  Laws to vote on
 				</ListItem>
-				</Link>
+			</a>
+				<a href="/Login">
 				<ListItem>
 				  <span slot="prepend">
 					<Icon path={mdiAccountGroup} />
 				  </span>
 				  Users
 				</ListItem>
-                
+			</a>
 			  <Divider></Divider>
               <ListItem on:click={toggle}>
                 <span slot="prepend">

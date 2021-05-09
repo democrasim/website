@@ -248,7 +248,7 @@ class Router {
 
 /**
  * @param {import('types/page').LoadOutput} loaded
- * @returns {import('types/page').LoadOutput}
+ * @returns {import('types/internal').NormalizedLoadOutput}
  */
 function normalize(loaded) {
 	// TODO should this behaviour be dev-only?
@@ -292,7 +292,7 @@ function normalize(loaded) {
 		}
 	}
 
-	return loaded;
+	return /** @type {import('types/internal').NormalizedLoadOutput} */ (loaded);
 }
 
 /** @param {any} value */
@@ -1054,7 +1054,9 @@ async function start({ paths, target, session, host, route, spa, hydrate }) {
 
 if (import.meta.env.VITE_SVELTEKIT_SERVICE_WORKER) {
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register(import.meta.env.VITE_SVELTEKIT_SERVICE_WORKER);
+		navigator.serviceWorker.register(
+			/** @type {string} */ (import.meta.env.VITE_SVELTEKIT_SERVICE_WORKER)
+		);
 	}
 }
 

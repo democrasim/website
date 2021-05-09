@@ -1,13 +1,18 @@
 
 import type { Law, Status, VoteType } from "../types";
 import { parseWithDate } from "./util";
+import laws from '../data/laws.json';
 
 const lawsApiEndpoint = 'http://localhost:8080/laws';
 
 
 export const  getLawsPassed = async () => {
-     let data = await fetch(`${lawsApiEndpoint}/passed/`);
-     return parseWithDate(await data.text()) as Law[]; 
+     //let data = await fetch(`${lawsApiEndpoint}/passed/`);
+     
+
+     
+     
+     return parseWithDate(JSON.stringify(laws)) as Law[]; 
 }
 
 export const getLawsUnvoted = async ( memberId: string ) => {
