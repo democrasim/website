@@ -12,7 +12,7 @@
         "content": {
           "id": 3,
           "type": "FACT",
-          "description": "שרבי השמין"
+          "description": "שוקולד טעים יותר משוקולד מריר"
         },
         "votes": [
           {
@@ -60,7 +60,7 @@
         "constitutional": true,
         "anonymousLegislator": false,
         "fakeName": "",
-        "contentString": "שרבי השמין"
+        "contentString": "שוקולד טעים יותר משוקולד מריר"
       },
     {
       "id": 2,
@@ -123,6 +123,6 @@
       "constitutional": true,
       "anonymousLegislator": false,
       "fakeName": "",
-      "contentString": "זה לא קול להשמין"
+      "contentString": "זה לא קול לא"
     }
   ]

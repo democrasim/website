@@ -7,9 +7,9 @@
 
     allMembers().then(list => members.set(list)); 
 
+    let users = $members;
     
 
-    let users = $members;
 </script>
 
 {#each users as user}
