@@ -32,8 +32,9 @@ ListItem,
 <NavigationDrawer style="height: 100vh; margin-top: 0">
 			<ListItem>
 				<span slot="prepend" class="ml-n2">
-
-				Mudit Somani
+					<Link to="/login">
+						Login
+					</Link>
 				</span>
 			  </ListItem>
 			  <Divider />

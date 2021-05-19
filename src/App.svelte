@@ -32,7 +32,7 @@ import Users from './routes/Users.svelte';
 	<Router url="{url}">
 		<div style="display: flex;">
 		<NavBar></NavBar>
-		<div style="width: 100%; min-height: 100; display: flex; flex-direction: column; justify-content: space-between; ">
+		<div style="width: 100%; min-height: 100; display: flex; flex-direction: column; justify-content: space-between; align-items: center; ">
 		  <Route path="/" component="{Home}" />
 		  <Route path="/laws_to_vote" component="{LawsToVote}" />
 		  <Route path="/login" component="{Login}" />
