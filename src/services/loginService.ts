@@ -6,6 +6,7 @@ const apiEndpoint = 'http://localhost:8080/';
 export const login = async ( phone : string, code : string ) => {
 
     let response = await fetch(apiEndpoint + 'login', {
+        method: 'POST',
         body: JSON.stringify({
             phone,  
             code
@@ -14,6 +15,7 @@ export const login = async ( phone : string, code : string ) => {
 
     if(response.ok) {
         token.set(response.headers['Authorization']);
+        return await response.json();
     } else {
         throw new Error('login failed');
     }

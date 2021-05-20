@@ -1,5 +1,6 @@
 <script lang="ts">
     import { mdiAlert } from "@mdi/js";
+    import { navigate } from 'svelte-routing';
     import {
         TextField,
         Button,
@@ -7,7 +8,8 @@
         Snackbar,
         Icon,
     } from "svelte-materialify";
-    import { sendCode } from "../services/loginService";
+    import { sendCode, login } from "../services/loginService";
+    import { member } from '../util/stores';
 
     function sendClick() {
         loading = true;
@@ -18,16 +20,33 @@
             })
             .catch((e) => {
                 loading = false;
-                error = true;
+                codeError = true;
             });
     }
 
+    function sendLogin() {
+        loading = true;
+        login(phone, code)
+        .then((signed) => {
+            member.set(signed);
+            loading = false;
+
+            navigate('/');
+        })
+        .catch(e => {
+            loading = false;
+            loginError = true;
+            console.error(e);
+        })
+    }
+
     let message = "Send Code";
-    let showCode = true;
+    let showCode = false;
     let code = "";
     let phone = "";
     let loading = false;
-    let error = false;
+    let codeError = false;
+    let loginError = false;
 
     $: message = showCode ? "Resend Code" : "Send Code";
 
@@ -37,29 +56,31 @@
 <h3>Login</h3>
 
 <div class="d-flex flex-column align-center ma-auto" style='max-width: 50rem'>
-    <TextField bind:phone placeholder="Ex. 972544805278" outlined
+    <TextField disabled={showCode} bind:value={phone} placeholder="Ex. 972544805278" outlined
         >Phone</TextField
     >
     {#if showCode}
-        <TextField bind:code rules={codeRules} outlined counter={6}>6 Digit Code</TextField>
+        <TextField bind:value={code} rules={codeRules} outlined counter={6}>6 Digit Code</TextField>
     {/if}
     <div class="d-flex flex-column justify-center align-center">
         {#if showCode}
-            <Button class="primary-color" on:click>Login</Button>
-        {/if}
-
-        {#if loading}
-            <ProgressCircular indeterminate color="primary" />
+            <Button class="primary-color" on:click={sendLogin}>Login</Button>
         {/if}
 
         <Button
             text={showCode}
             class={showCode ? "primary-text" : "primary-color"}
             on:click={sendClick}>{message}</Button>
+
+            
+        {#if loading}
+        <ProgressCircular indeterminate color="success" />
+    {/if}
+
     </div>
     <Snackbar
         class="flex-column error-color"
-        bind:active={error}
+        bind:active={codeError}
         bottom
         center
         timeout={10000}
@@ -67,5 +88,16 @@
         <Icon path={mdiAlert} />
         Sending code failed, check that the phone number is in the right format and
         that the whatsapp bot is active
+    </Snackbar>
+
+    <Snackbar
+        class="flex-column error-color"
+        bind:active={loginError}
+        bottom
+        center
+        timeout={10000}
+    >
+        <Icon path={mdiAlert} />
+        code is not valid or expired
     </Snackbar>
 </div>

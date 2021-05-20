@@ -20,7 +20,7 @@ ListItem,
 	import Login from '../routes/Login.svelte';
 	const links = ['Home', 'Login'];
 
-    import { theme } from '../util/stores';
+    import { theme, member } from '../util/stores';
 
     function toggle() {
         theme.set($theme === 'light' ? 'dark' : 'light');
@@ -32,9 +32,14 @@ ListItem,
 <NavigationDrawer style="height: 100vh; margin-top: 0">
 			<ListItem>
 				<span slot="prepend" class="ml-n2">
+					{#if $member}
+						{$member.name} {$member.phone}
+					{:else}
+					
 					<Link to="/login">
 						Login
 					</Link>
+					{/if}
 				</span>
 			  </ListItem>
 			  <Divider />
