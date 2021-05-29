@@ -26,6 +26,7 @@
 
     export interface Law {
         id: string;
+        number: Number;
         legislator: Member;
         content: Content;
         votes: Vote[];

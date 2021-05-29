@@ -5,9 +5,8 @@ import { token } from '../util/stores';
 
 const lawsApiEndpoint = 'http://localhost:8080/laws';
 
-
-export const  getLawsPassed = async () => {
-     let data = await fetch(`${lawsApiEndpoint}/passed/`,{
+export const  getLawsByStatus = async (status: string) => {
+     let data = await fetch(`${lawsApiEndpoint}/with_status/${status}/`,{
         
         headers: {
             'Authorization': localStorage.getItem('jwt')
@@ -15,6 +14,7 @@ export const  getLawsPassed = async () => {
     });
      return parseWithDate(await data.text()) as Law[]; 
 }
+
 
 export const getLawsUnvoted = async ( memberId: string ) => {
     let data = await fetch(`${lawsApiEndpoint}/not_voted?userId=${memberId}`,{

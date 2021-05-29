@@ -9,7 +9,7 @@
         Icon,
     } from "svelte-materialify";
     import { sendCode, login } from "../services/loginService";
-    import { member } from '../util/stores';
+    import { memberId } from '../util/stores';
 
     function sendClick() {
         loading = true;
@@ -27,8 +27,7 @@
     function sendLogin() {
         loading = true;
         login(phone, code)
-        .then((signed) => {
-            member.set(signed);
+        .then(() => {
             loading = false;
 
             navigate('/');

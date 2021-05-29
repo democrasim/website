@@ -1,22 +1,30 @@
 
 
-<h3>LawsToVote</h3>
+<h3>Laws To Vote on</h3>
 
+<div>
 {#each $lawsToVote as law}
 	
 	<LawComponent {law} />
 
 {/each}
-
+</div>
 
 <script lang="ts">
     import LawComponent from '../components/Law.svelte';
     import type { Law } from '../types';
     import { writable } from 'svelte/store';
+    import { getLawsUnvoted } from '../services/lawService';
+    import { member } from '../util/stores';
 
 
-    import lawsData from '../data/laws.json';
+    let lawsToVote = writable([]);
 
-    export const lawsToVote : SvelteStore<Law[]> = writable(lawsData);
+    $:if($member) {
+        getLawsUnvoted($member.id).then((laws) => $lawsToVote = laws);
+        
+    } else {
+        $lawsToVote = [];
+    }
 
 </script>

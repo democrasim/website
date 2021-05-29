@@ -15,12 +15,14 @@
   //@ts-ignore
   import { Chip } from "svelte-materialify";
 
-  import { mdiBook, mdiCalendarCheck } from '@mdi/js';
+  import { mdiBook, mdiCalendarCheck, mdiCalendar, mdiCancel, mdiAccountPlus, mdiBookmark } from '@mdi/js';
 
   import Vote from "./Vote.svelte";
   import type { Law } from "../types";
   import Status from "./Status.svelte";
   export let law: Law;
+  let underVote = false;
+  $: underVote = law.content.type === 'UNDER_VOTE';
 </script>
 
 <Card style="max-width: 500px; margin: 10px">
@@ -32,17 +34,25 @@
        <Icon path={mdiBook} /> <span>FACT</span>
       {:else if law.content.type == "REQUIREMENT"}
       <Icon path={mdiCalendarCheck} /> <span>REQUIREMENT</span>
+      {:else if law.content.type == "EVENT"}
+      <Icon path={mdiCalendar} /> <span>EVENT</span>
+      {:else if law.content.type == "BAN"}
+      <Icon path={mdiCancel} /> <span>BAN</span>
+      {:else if law.content.type == "AddMember"}
+      <Icon path={mdiAccountPlus} /> <span>ADD MEMBER</span>
+      {:else}
+      <Icon path={mdiBookmark} /> <span>{law.content.type}</span>
       {/if}
     </Chip>
   </CardTitle>
   <CardSubtitle>
-    LAW #{law.id}
+    LAW #{law.number}
   </CardSubtitle>
 
   <CardActions>
-    <Button text class="success-text">FOR</Button>
-    <Button text class="primary-text">ABSTAIN</Button>
-    <Button text class="error-text">AGAINST</Button>
+    <Button text class={underVote && "success-text"} disabled={!underVote}>FOR</Button>
+    <Button text class={underVote && "primary-text"} disabled={!underVote}>ABSTAIN</Button>
+    <Button text class={underVote && "error-text"} disabled={!underVote}>AGAINST</Button>
   </CardActions>
   <ExpansionPanels multiple>
     <ExpansionPanel>

@@ -1,4 +1,4 @@
-import { token } from '../util/stores';
+import { token, memberId } from '../util/stores';
 
 const apiEndpoint = 'http://localhost:8080/';
 
@@ -14,8 +14,10 @@ export const login = async ( phone : string, code : string ) => {
     })
 
     if(response.ok) {
-        token.set(response.headers['Authorization']);
-        return await response.json();
+        let data = await response.json();
+        token.set('Bearer ' + data.token);
+        memberId.set(data.member.id);
+        return data.member;
     } else {
         throw new Error('login failed');
     }

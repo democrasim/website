@@ -62,6 +62,14 @@ ListItem,
 				  Laws to vote on
 				</ListItem>
 				</Link>
+				<Link to="/laws_passed">
+					<ListItem>
+					  <span slot="prepend">
+						<Icon path={mdiVote } />
+					  </span>
+					  Laws Passed
+					</ListItem>
+					</Link>
 				<ListItem>
 				  <span slot="prepend">
 					<Icon path={mdiAccountGroup} />

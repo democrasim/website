@@ -3,6 +3,16 @@ import { parseWithDate } from "./util";
 
 const memberApiEndpoint = 'http://localhost:8080/member';
 
+export const get = async (id) => {
+    const data = await fetch(`${memberApiEndpoint}/by_id/${id}`,
+    { headers: {
+        'Authorization': localStorage.getItem('jwt')
+    }});
+
+    return parseWithDate(await data.text()) as Member;
+    
+}
+
 export const allMembers = async () => {
     const data = await fetch(`${memberApiEndpoint}/all/`,{
         
