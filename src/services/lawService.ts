@@ -15,12 +15,12 @@ export const getLawsUnvoted = async (memberId: string) => {
 }
 
 export const vote = async (member: string, law: string, type: VoteType, reason: string) => {
-    return await apiCall<Law[]>('PUT', `${lawsApiEndpoint}/vote`, {
+    return await apiCall<Law>('PUT', `${lawsApiEndpoint}/vote`, {
         member,
         law,
         type,
         reason
-    }, true, 'Could not vote');
+    }, true, 'Could not vote', true);
 }
 
 export const lawsByStatus = async (status: Status, page?: number, limit?: number) => {

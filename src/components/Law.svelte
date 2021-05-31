@@ -17,12 +17,23 @@
 
   import { mdiBook, mdiCalendarCheck, mdiCalendar, mdiCancel, mdiAccountPlus, mdiBookmark } from '@mdi/js';
 
+  import { vote as voteCall } from '../services/lawService';
+
   import Vote from "./Vote.svelte";
-  import type { Law } from "../types";
+  import type { Law, VoteType } from "../types";
   import Status from "./Status.svelte";
+import { memberId } from "../util/stores";
   export let law: Law;
   let underVote = false;
-  $: underVote = law.content.type === 'UNDER_VOTE';
+  $: underVote = law.status === 'UNDER_VOTE';
+
+
+  let user = $memberId;
+
+  async function vote(voteType: VoteType) {
+    law = await voteCall(user, law.id, voteType, '');
+    console.log(law);
+  }
 </script>
 
 <Card style="min-width: 500px; margin: 10px">
@@ -50,9 +61,9 @@
   </CardSubtitle>
 
   <CardActions>
-    <Button text class={underVote && "success-text"} disabled={!underVote}>FOR</Button>
-    <Button text class={underVote && "primary-text"} disabled={!underVote}>ABSTAIN</Button>
-    <Button text class={underVote && "error-text"} disabled={!underVote}>AGAINST</Button>
+    <Button text outlined={law.userVote?.vote === 'FOR'} class={underVote && "success-text"} on:click={() => vote('FOR')} disabled={!underVote}>FOR</Button>
+    <Button text outlined={law.userVote?.vote === 'ABSTAIN'} class={underVote && "primary-text"} on:click={() => vote('ABSTAIN')} disabled={!underVote}>ABSTAIN</Button>
+    <Button text outlined={law.userVote?.vote === 'AGAINST'} class={underVote && "error-text"} on:click={() => vote('AGAINST')} disabled={!underVote}>AGAINST</Button>
   </CardActions>
   <ExpansionPanels multiple>
     <ExpansionPanel>

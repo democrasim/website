@@ -4,7 +4,7 @@
 
 <Select {items} bind:value />
 
-{#each $passedLaws as law}
+{#each $lawStore as law}
 	
 	<LawComponent {law} />
 
@@ -17,7 +17,7 @@
     import type { Law } from '../types';
     import { writable } from 'svelte/store';
     import { getLawsByStatus } from '../services/lawService';
-    import { member } from '../util/stores';
+    import { member, laws as lawStore } from '../util/stores';
 
     const items = [
         { name: 'Passed', value: 'PASSED' },
@@ -29,13 +29,11 @@
 
     let value = 'PASSED';
 
-    let passedLaws = writable([]);
-
     $:if($member) {
-        getLawsByStatus(value).then((laws) => $passedLaws = laws);
+        getLawsByStatus(value).then((laws) => $lawStore = laws);
         
     } else {
-        $passedLaws = [];
+        $lawStore = [];
     }
 
 </script>

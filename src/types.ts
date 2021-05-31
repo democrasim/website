@@ -6,7 +6,6 @@
         president: boolean;
         registered: boolean;
         joined: Date;
-        userVote?: Vote;
     }
 
     export interface Content {
@@ -33,9 +32,11 @@
         votes: Vote[];
         status: Status;
         timestamp: Date;
+        resolveTime: Date;
         constitutional: boolean;
         anonymousLegislator: boolean;
         fakeName: string;
         contentString: string;
+        userVote?: Vote;
     }
 
