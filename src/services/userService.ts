@@ -1,34 +1,18 @@
 import type { Member } from "../types";
-import { parseWithDate } from "./util";
+import { apiCall, parseWithDate } from "./util";
 
-const memberApiEndpoint = 'http://localhost:8080/member';
+const memberApiEndpoint = 'member';
 
-export const get = async (id) => {
-    const data = await fetch(`${memberApiEndpoint}/by_id/${id}`,
-    { headers: {
-        'Authorization': localStorage.getItem('jwt')
-    }});
-
-    return parseWithDate(await data.text()) as Member;
+export const get = async (id: string) => {
+    return await apiCall<Member>('GET', `${memberApiEndpoint}/by_id/${id}`,{}, true, 'Could not fetch member');
     
 }
 
 export const allMembers = async () => {
-    const data = await fetch(`${memberApiEndpoint}/all/`,{
-        
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-    });
-     return parseWithDate(await data.text()) as Member[]; 
+    return await apiCall<Member[]>('GET', `${memberApiEndpoint}/all/`,{}, true, 'Could not fetch members');
 }
 
 export const allMembersRegistered = async () => {
-    const data = await fetch(`${memberApiEndpoint}/all?registered=true`,{
-        
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-    });
-     return parseWithDate(await data.text()) as Member[]; 
+    return await apiCall<Member[]>('GET', `${memberApiEndpoint}/all?registered=true`,{}, true, 'Could not fetch registered members');
+
 }

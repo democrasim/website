@@ -1,33 +1,29 @@
+import type { Member } from '../types';
 import { token, memberId } from '../util/stores';
+import { apiCall } from './util';
 
 const apiEndpoint = 'http://localhost:8080/';
 
 
 export const login = async ( phone : string, code : string ) => {
 
-    let response = await fetch(apiEndpoint + 'login', {
-        method: 'POST',
-        body: JSON.stringify({
-            phone,  
-            code
-        })
-    })
+    try {
 
-    if(response.ok) {
-        let data = await response.json();
-        token.set('Bearer ' + data.token);
-        memberId.set(data.member.id);
-        return data.member;
-    } else {
-        throw new Error('login failed');
+    let data = await apiCall<{ token: string, member: Member }>('POST','login/', { 
+        phone,
+        code
+     }, false,
+     'Login Failed');
+
+     token.set('Bearer ' + data.token);
+    memberId.set(data.member.id);
+
+    } catch(e) {
+
     }
 }
 
 export const sendCode = async ( phone : string ) => {
-    let response = await fetch(apiEndpoint + 'code/wa/?mobile=' + phone)
-
-    if(!response.ok) {
-        throw new Error('wa service offline');
-    }
+    await apiCall('GET' ,'code/wa/?mobile=' + phone, {}, false, 'WhatsApp Service Offline');
 }
 

@@ -20,7 +20,6 @@
             })
             .catch((e) => {
                 loading = false;
-                codeError = true;
             });
     }
 
@@ -34,7 +33,6 @@
         })
         .catch(e => {
             loading = false;
-            loginError = true;
             console.error(e);
         })
     }

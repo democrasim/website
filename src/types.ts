@@ -6,6 +6,7 @@
         president: boolean;
         registered: boolean;
         joined: Date;
+        userVote?: Vote;
     }
 
     export interface Content {

@@ -25,7 +25,7 @@
   $: underVote = law.content.type === 'UNDER_VOTE';
 </script>
 
-<Card style="max-width: 500px; margin: 10px">
+<Card style="min-width: 500px; margin: 10px">
   <CardTitle style="justify-content: space-between;">
     {law.contentString}
 

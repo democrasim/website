@@ -1,6 +1,6 @@
 
 
-<h3>Passed Laws</h3>
+<h3>{value.toLowerCase()} Laws</h3>
 
 <Select {items} bind:value />
 

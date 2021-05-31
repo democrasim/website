@@ -17,6 +17,8 @@ export const theme = writable<'light' | 'dark'>(light);
 
 export const laws = writable<Law[]>([]);
 
+export const error = writable<string>('');
+
 export const members = writable<Member[]>([]);
 
 export const token = localWritable<string>("jwt");

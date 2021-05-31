@@ -1,6 +1,6 @@
 <script lang="typescript">
 	import NavBar from "./components/NavBar.svelte";
-
+	import ErrorBar from './components/ErrorBar.svelte';
 	import { mdiHomeCity, mdiAccountGroup, mdiVote } from "@mdi/js";
 
 	import {
@@ -65,4 +65,5 @@
 			</div>
 		</div>
 	</Router>
+	<ErrorBar />
 </MaterialApp>

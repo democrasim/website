@@ -1,59 +1,35 @@
 
 import type { Law, Status, VoteType } from "../types";
-import { parseWithDate } from "./util";
+import { apiCall, parseWithDate } from "./util";
 import { token } from '../util/stores';
 
-const lawsApiEndpoint = 'http://localhost:8080/laws';
+const lawsApiEndpoint = 'laws';
 
-export const  getLawsByStatus = async (status: string) => {
-     let data = await fetch(`${lawsApiEndpoint}/with_status/${status}/`,{
-        
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-    });
-     return parseWithDate(await data.text()) as Law[]; 
+export const getLawsByStatus = async (status: string) => {
+    return await apiCall<Law[]>('GET', `${lawsApiEndpoint}/with_status/${status}/`, {}, true, 'Could not retreive laws');
 }
 
 
-export const getLawsUnvoted = async ( memberId: string ) => {
-    let data = await fetch(`${lawsApiEndpoint}/not_voted?userId=${memberId}`,{
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-    });
-
-    return parseWithDate(await data.text()) as Law[]; 
+export const getLawsUnvoted = async (memberId: string) => {
+    return await apiCall<Law[]>('GET', `${lawsApiEndpoint}/not_voted?userId=${memberId}`, {}, true, 'Could not retreive laws');
 }
 
-export const vote = async ( member: string, law: string, type: VoteType, reason: string  ) => {
-    let data = await fetch(`${lawsApiEndpoint}/vote`, {
-        method: 'POST',
-        body: JSON.stringify({
-            member,
-            law,
-            type,
-            reason
-        }),
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-
-    });
-
-    return parseWithDate(await data.text()) as Law; 
+export const vote = async (member: string, law: string, type: VoteType, reason: string) => {
+    return await apiCall<Law[]>('PUT', `${lawsApiEndpoint}/vote`, {
+        member,
+        law,
+        type,
+        reason
+    }, true, 'Could not vote');
 }
 
-export const lawsByStatus = async ( status: Status, page?: number, limit?: number  ) => {
-    if(!page && limit) page = 1;
-    if(!limit && page) limit = 50;
-    
-    let data = (page && limit) ? await fetch(`${lawsApiEndpoint}/with_status/${status}?page=${page}&limit=${limit}`)
-    : await fetch(`${lawsApiEndpoint}/with_status/${status}`, {
-        headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
-    });
+export const lawsByStatus = async (status: Status, page?: number, limit?: number) => {
+    if (!page && limit) page = 1;
+    if (!limit && page) limit = 50;
 
-    return parseWithDate(await data.text()) as Law[]; 
+    return await apiCall<Law[]>('GET',
+     `${lawsApiEndpoint}/with_status/${status}/${(page && limit) ? `?page=${page}&limit=${limit}` : ''}`,
+      {},
+       true, 'Could not retreive laws');
+
 }
