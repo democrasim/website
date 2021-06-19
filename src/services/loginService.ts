@@ -1,29 +1,33 @@
-import type { Member } from '../types';
-import { token, memberId } from '../util/stores';
-import { apiCall } from './util';
+import type { Member } from "../types";
+import { token, memberId } from "../util/stores";
+import { apiCall } from "./util";
 
-const apiEndpoint = 'http://localhost:8080/';
+const apiEndpoint = "http://localhost:8080/";
 
-
-export const login = async ( phone : string, code : string ) => {
-
-    try {
-
-    let data = await apiCall<{ token: string, member: Member }>('POST','login/', { 
+export const login = async (phone: string, code: string) => {
+  try {
+    let data = await apiCall<{ token: string; member: Member }>(
+      "POST",
+      "login",
+      {
         phone,
-        code
-     }, false,
-     'Login Failed');
+        code,
+      },
+      false,
+      "Login Failed"
+    );
 
-     token.set('Bearer ' + data.token);
+    token.set("Bearer " + data.token);
     memberId.set(data.member.id);
+  } catch (e) {}
+};
 
-    } catch(e) {
-
-    }
-}
-
-export const sendCode = async ( phone : string ) => {
-    await apiCall('GET' ,'code/wa/?mobile=' + phone, {}, false, 'WhatsApp Service Offline');
-}
-
+export const sendCode = async (phone: string) => {
+  await apiCall<boolean>(
+    "GET",
+    "code/wa/?mobile=" + phone,
+    {},
+    false,
+    "WhatsApp Service Offline"
+  );
+};
